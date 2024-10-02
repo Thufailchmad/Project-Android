@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundbru"
+        android:gravity="center"
+        android:padding="16dp"
+        tools:context=".Login">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingLeft="15dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/salah"
+                android:text="Email atau password salah"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#FBC5C5"
+                android:gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"
+                />
+
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner"
+                android:drawableLeft="@drawable/ic_user"
+                android:hint="Email"
+                android:inputType="text"
+                android:padding="18dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingLeft="15dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/erroremail"
+                android:text="Email tidak boleh kosong"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#FBC5C5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/email_input"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"
+                />
+
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corner"
+                android:drawableLeft="@drawable/ic_info"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="18dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingLeft="15dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/errorpassword"
+                android:text="Password tidak boleh kosong"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="#FBC5C5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/password_input"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:backgroundTint="@color/white"
+                android:textColor="#3884F1"
+                android:padding="18dp"
+                android:layout_marginTop="32dp"
+                android:textSize="20sp"
+                android:id="@+id/login_btn" />
+
+            <TextView
+                android:id="@+id/account_check_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Punya Akun?"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/register_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register Disini"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:paddingTop="10dp"
+                android:paddingBottom="14dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onRegisterClick"
+                android:gravity="center"
+                android:minHeight="48dp"/>
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
