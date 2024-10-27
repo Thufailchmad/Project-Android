@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                             salah.setVisibility(View.VISIBLE);
                         }
                     }else {
-                        Intent intent = new Intent(getApplicationContext(), HomeFragment.class);
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
                     }
                 } catch (UnsupportedEncodingException e) {

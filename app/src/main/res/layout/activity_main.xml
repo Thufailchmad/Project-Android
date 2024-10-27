@@ -5,7 +5,7 @@
     android:id="@+id/register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundbru"
+    android:background="@drawable/dasar1"
     tools:context=".MainActivity">
 
 
@@ -20,6 +20,7 @@
         android:layout_marginBottom="120dp"
         android:gravity="center"
         android:src="@drawable/logo" />
+
 
     <Button
         android:layout_width="match_parent"

@@ -3,10 +3,17 @@ package com.thufail.project;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,9 +27,21 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button button;
+
+    String[] name = {
+            "Philips 4W",
+            "Philips 6W",
+            "Philips 8W",
+            "Philips 10W",
+            "Philips 12W",
+            "Philips 14,5W",
+            "Philips 19W"
+    };
 
     public HomeFragment() {
         // Required empty public constructor
@@ -60,5 +79,5 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
-    }
+    };
 }

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dasar1"
+    android:gravity="center"
+    tools:context=".DeskripsiActivity">
+
+    <LinearLayout
+        android:id="@+id/produk_card"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:orientation="vertical"
+        android:background="@drawable/kotak_keranjang"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="foto produk"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stopkontak" />
+
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop Kontak Listrik"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/kategori_produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Barang Elektronik"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/harga_produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp. 17.000"
+            android:textColor="#007bff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_to_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah ke Keranjang"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:background="#007bff"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_below="@id/produk_card"
+        android:layout_centerHorizontal="false"/>
+
+    <LinearLayout
+        android:id="@+id/deskripsi_card"
+        android:layout_width="262dp"
+        android:layout_height="262dp"
+        android:orientation="vertical"
+        android:layout_below="@id/btn_add_to_cart"
+        android:background="@drawable/kotak_deskripsi">
+
+    <ImageView
+        android:id="@+id/deskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="foto produk"
+        android:layout_below="@+id/produk_card"
+        android:scaleType="fitCenter"
+       />
+
+    <TextView
+        android:id="@+id/label_deskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/deskripsi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/detail_deskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis impedit exercitationem maiores ullam, deserunt quos saepe. Nam provident totam porro, tempora incidunt temporibus natus nostrum corporis, sint pariatur itaque quos?
+    Incidunt quidem sit voluptate quis velit. Facere ipsum dolore maxime eveniet dolores quibusdam saepe obcaecati assumenda ipsa. Amet delectus nesciunt quibusdam nemo et dolorem! Ad deleniti id ullam aliquid harum!
+    Sint aspernatur a consequuntur dolores ex consectetur ipsam sit accusamus quia laborum numquam nesciunt reiciendis iste expedita, doloremque nisi quod harum quis cum qui. Beatae quae accusantium mollitia amet consequatur!
+    Laborum enim est nobis minima! Unde veniam suscipit, incidunt sunt soluta ipsam atque assumenda ab deleniti praesentium repudiandae hic impedit, molestiae eum quae accusantium voluptates architecto quas, repellat ex magnam!
+    Doloribus odio pariatur facilis adipisci commodi ducimus quod nisi magnam amet et, laborum ab laudantium eum dolores laboriosam ipsum esse assumenda culpa, quas accusamus quos. Magnam fugiat deleniti corporis aspernatur.
+    In cupiditate exercitationem mollitia omnis excepturi corporis autem provident non quod dolore tempore sint deleniti corrupti quisquam possimus illum odio voluptatum, rerum nam, perspiciatis blanditiis? In nulla incidunt et doloribus!
+    Incidunt reiciendis adipisci accusantium optio fuga necessitatibus corrupti velit! Voluptatem doloribus sapiente sed. Vero veniam saepe suscipit neque maiores necessitatibus dolores sequi ipsa. Aspernatur architecto quis ipsum aut deleniti incidunt!
+    Aperiam sequi alias voluptates repellat officiis quas sed numquam, quisquam odio voluptate beatae eaque eum corrupti aut aspernatur harum nisi dolores natus blanditiis neque quos molestias! Dicta expedita nobis inventore.
+    Rerum omnis, dolor facere alias exercitationem doloremque voluptatibus dolore, ullam laudantium porro modi officia, vero tempora magnam inventore. Et veritatis voluptatem totam necessitatibus quam inventore quasi expedita facere nobis ratione.
+    Aperiam ex natus eum voluptatum repellat dolore. Quae amet saepe commodi nihil animi quibusdam ipsam voluptatibus! Blanditiis, numquam quae ducimus repellat quasi neque iste sint enim possimus laudantium? Modi"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
