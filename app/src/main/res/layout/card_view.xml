@@ -18,11 +18,12 @@
             android:layout_marginRight="5dp"/>
         
         <TextView
-            android:id="@+id/datatext"
+            android:id="@+id/data_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="STOPKONTAK"
             android:textSize="15dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

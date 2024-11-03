@@ -45,7 +45,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.HolderData> {
             public HolderData(@NonNull View itemView) {
             super(itemView);
 
-            txtData = itemView.findViewById(R.id.datatext);
+            txtData = itemView.findViewById(R.id.data_text);
         }
     }
 }

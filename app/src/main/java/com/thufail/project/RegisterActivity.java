@@ -1,5 +1,7 @@
 package com.thufail.project;
 
+import static com.thufail.project.R.layout.activity_register;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -42,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
+        setContentView(activity_register);
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(new apiConnection().host+"/register/index.php");
