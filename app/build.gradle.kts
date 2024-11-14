@@ -57,4 +57,9 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("org.apache.httpcomponents:httpclient:4.5.14")
+    implementation("androidx.test:core:1.6.0")
+    implementation("androidx.legacy:legacy-support-core-utils:1.0.0")
+    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }

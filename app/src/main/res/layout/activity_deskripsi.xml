@@ -104,6 +104,7 @@
         android:text="Deskripsi"
         android:textColor="#000000"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/deskripsi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,6 +114,7 @@
         android:id="@+id/detail_deskripsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis impedit exercitationem maiores ullam, deserunt quos saepe. Nam provident totam porro, tempora incidunt temporibus natus nostrum corporis, sint pariatur itaque quos?
     Incidunt quidem sit voluptate quis velit. Facere ipsum dolore maxime eveniet dolores quibusdam saepe obcaecati assumenda ipsa. Amet delectus nesciunt quibusdam nemo et dolorem! Ad deleniti id ullam aliquid harum!
     Sint aspernatur a consequuntur dolores ex consectetur ipsam sit accusamus quia laborum numquam nesciunt reiciendis iste expedita, doloremque nisi quod harum quis cum qui. Beatae quae accusantium mollitia amet consequatur!
