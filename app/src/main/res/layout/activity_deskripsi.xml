@@ -67,7 +67,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_add_to_cart"
+        android:id="@+id/tambah_keranjang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah ke Keranjang"
@@ -84,7 +84,7 @@
         android:layout_width="262dp"
         android:layout_height="262dp"
         android:orientation="vertical"
-        android:layout_below="@id/btn_add_to_cart"
+        android:layout_below="@id/tambah_keranjang"
         android:background="@drawable/kotak_deskripsi">
 
     <ImageView

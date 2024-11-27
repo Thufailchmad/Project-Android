@@ -53,7 +53,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.GridItemViewHo
         Item item = itemModels.get(position);
         holder.itemName.setText(item.getName());
         holder.itemPrice.setText("Rp" + format.format(item.getPrice()));
-        Glide.with(context).load(new apiConnection().host + "/" + item.getPhoto()).listener(new RequestListener<Drawable>() {
+        Glide.with(context).load(new apiConnection().host + "/assets/" + item.getPhoto()).listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, @Nullable Object model, @NonNull com.bumptech.glide.request.target.Target<Drawable> target, boolean isFirstResource) {
                 Log.e("Glide", "Load Failed", e);
@@ -65,7 +65,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.GridItemViewHo
                 return false;
             }
         }).into(holder.imageView);
-
     }
 
 

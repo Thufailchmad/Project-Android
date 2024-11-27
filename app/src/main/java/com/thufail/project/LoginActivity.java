@@ -1,8 +1,10 @@
 package com.thufail.project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 HttpClient client = new DefaultHttpClient();
-                HttpPost post = new HttpPost(new apiConnection().host+"/login/index.php");
+                HttpPost post = new HttpPost(new apiConnection().host+"/auth/login.php");
 
                 email = findViewById(R.id.email_input);
                 password = findViewById(R.id.password_input);
@@ -85,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject object = new JSONObject(EntityUtils.toString(response.getEntity()));
                     Toast.makeText(LoginActivity.this, object.getString("status"), Toast.LENGTH_LONG).show();
 
-                    if (object.getString("status").equals("error")){
+                    if (object.getString("status").equals("Login Gagal")){
                         if (object.has("error")){
                             JSONObject errorObject = object.getJSONObject("error");
                             if (!errorObject.getString("email").isEmpty()){
@@ -102,6 +104,11 @@ public class LoginActivity extends AppCompatActivity {
                             salah.setVisibility(View.VISIBLE);
                         }
                     }else {
+                        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putInt("user_id", object.getInt("user_id"));
+                        editor.apply();
+
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
                     }

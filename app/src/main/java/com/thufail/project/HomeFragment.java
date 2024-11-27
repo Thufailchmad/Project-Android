@@ -47,44 +47,9 @@ public class HomeFragment extends Fragment {
 
     private CardAdapter cardAdapter;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    Button button;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -111,12 +76,13 @@ public class HomeFragment extends Fragment {
         protected List<Item> doInBackground(Void... voids) {
             try {
                 HttpClient client = new DefaultHttpClient();
-                HttpGet get = new HttpGet(new apiConnection().host + "/item");
+                HttpGet get = new HttpGet(new apiConnection().host);
+                get.addHeader("User-Agent", "android");
                 HttpResponse response = client.execute(get);
                 HttpEntity entity = response.getEntity();
                 String json = EntityUtils.toString(entity);
                 Log.d("creation", "json "+json);
-                JSONObject object = new JSONObject(json);
+                JSONObject object =  new JSONObject(json);
 
                 Gson gson = new Gson();
                 Item[] items = gson.fromJson(object.getJSONArray("item").toString(), Item[].class);

@@ -1,64 +1,162 @@
 package com.thufail.project;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link KeranjangFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class KeranjangFragment extends Fragment {
+import com.google.gson.Gson;
+import com.thufail.project.Model.Cart;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public KeranjangFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment KeranjangFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static KeranjangFragment newInstance(String param1, String param2) {
-        KeranjangFragment fragment = new KeranjangFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class KeranjangFragment extends Fragment implements CartAdapter.TotalPriceListener {
+    RecyclerView recyclerView;
+    List<Cart> carts;
+    CartAdapter adapter;
+    TextView total_harga;
+    Button btn_checkout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_keranjang, container, false);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        View view = inflater.inflate(R.layout.fragment_keranjang, container, false);
+        new GetKeranjang().execute();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.list_cart);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        total_harga = (TextView) view.findViewById(R.id.total_harga);
+
+        btn_checkout = view.findViewById(R.id.btn_checkout);
+        btn_checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    SharedPreferences preferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+
+                    HttpClient client = new DefaultHttpClient();
+                    HttpPost post = new HttpPost(new apiConnection().host + "/user/keranjang.php?user_id=" + String.valueOf(preferences.getInt("user_id", 0)));
+                    post.addHeader("User-Agent", "android");
+
+                    List<NameValuePair> list = new ArrayList<>(1);
+                    list.add(new BasicNameValuePair("action", "checkout"));
+                    post.setEntity(new UrlEncodedFormEntity(list));
+
+                    HttpResponse response = client.execute(post);
+                    String responseString = EntityUtils.toString(response.getEntity());
+                    JSONObject object = new JSONObject(responseString);
+                    Log.d("creation", "json " + responseString);
+                    if(object.has("success")){
+                        adapter.notifyDataSetChanged();
+                        onTotalPriceChange(0);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.flFragment, new HomeFragment())
+                                .commit();
+                    }
+                } catch (UnsupportedEncodingException e) {
+                    throw new RuntimeException(e);
+                } catch (ClientProtocolException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onTotalPriceChange(int totalPrice) {
+        total_harga.setText(String.valueOf(totalPrice));
+        Log.d("creation", String.valueOf(totalPrice));
+    }
+
+    public class GetKeranjang extends AsyncTask<Void, Void, List<Cart>>{
+
+        @Override
+        protected List<Cart> doInBackground(Void... voids) {
+            try {
+                SharedPreferences preferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+
+                HttpClient client = new DefaultHttpClient();
+                HttpGet get = new HttpGet(new apiConnection().host + "/user/keranjang.php?user_id=" + String.valueOf(preferences.getInt("user_id", 0)));
+                get.addHeader("User-Agent", "android");
+                HttpResponse response = client.execute(get);
+                HttpEntity entity = response.getEntity();
+                String json = EntityUtils.toString(entity);
+                Log.d("creation", "json" + json);
+                JSONObject object = new JSONObject(json);
+
+                Gson gson = new Gson();
+                Cart[] carts = gson.fromJson(object.getJSONArray("cartItems").toString(), Cart[].class);
+                Log.d("creation", Arrays.asList(carts).get(0).getPhoto());
+                return Arrays.asList(carts);
+
+            } catch (ClientProtocolException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        protected void onPostExecute(List<Cart> list){
+            if(list!=null){
+                carts = list;
+                adapter = new CartAdapter(getContext().getApplicationContext(), carts, KeranjangFragment.this);
+                recyclerView.setAdapter(adapter);
+                total_harga.setText(String.valueOf(adapter.GetPrice()));
+                Log.d("creation", String.valueOf(adapter.GetPrice()));
+            } else {
+                // Handle empty data situation
+                recyclerView.setVisibility(View.GONE);
+            }
+        }
     }
 }

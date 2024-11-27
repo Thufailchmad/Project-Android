@@ -7,80 +7,34 @@
     android:background="@drawable/dasar1"
     tools:context=".HomeFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_cart" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:background="@drawable/kotak_keranjang"
-        >
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
 
-        <!-- Gambar Produk -->
-        <ImageView
-            android:id="@+id/produk_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/stopkontak" />
-
-        <!-- Detail Produk -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!-- Nama Produk -->
-            <TextView
-                android:id="@+id/product_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stop Kontak Listrik 3M"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <!-- Harga Produk -->
-            <TextView
-                android:id="@+id/product_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp. 17.000"
-                android:textSize="14sp"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <!-- Kuantitas dan Tombol Plus/Minus -->
-        <LinearLayout
+        <TextView
+            android:id="@+id/total_harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="Total harga :"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginRight="150dp"
+            />
 
-            <Button
-                android:id="@+id/button_minus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#0000ff"
-                android:text="-"
-                />
-
-            <TextView
-                android:id="@+id/product_quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/button_plus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checkout" />
 
     </LinearLayout>
 
