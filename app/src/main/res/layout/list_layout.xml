@@ -10,13 +10,15 @@
     <LinearLayout
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/img_lampu"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginHorizontal="7dp"
+            android:backgroundTint="@color/black"
             android:src="@drawable/lampu1"
             android:layout_gravity="center_horizontal"/>
 
@@ -26,6 +28,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="1dp"
             android:text="title"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingLeft="5dp"/>
@@ -36,6 +39,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="1dp"
             android:text="title"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingRight="5dp"

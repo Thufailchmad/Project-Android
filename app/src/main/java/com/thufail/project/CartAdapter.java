@@ -1,6 +1,7 @@
 package com.thufail.project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -171,6 +172,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                 Log.d("creation", entityUtils);
                 if(object.has("success")){
                     Log.d("creation", "success");
+                    if (getItemCount() == 1){
+                        Intent intent = new Intent(context, HomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                        return;
+                    }
                     this.carts = getData();
                     notifyDataSetChanged();
                     totalPriceListener.onTotalPriceChange(GetPrice());
@@ -189,7 +196,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return carts.size();
+        return carts != null ? carts.size():0;
     }
 
     public static List<Cart> getData(){

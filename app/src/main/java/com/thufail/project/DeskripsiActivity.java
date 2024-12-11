@@ -1,5 +1,6 @@
 package com.thufail.project;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -85,6 +86,8 @@ public class DeskripsiActivity extends AppCompatActivity {
                     JSONObject object = new JSONObject(entityUtils);
 
                     Toast.makeText(DeskripsiActivity.this, object.getString("message"), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(DeskripsiActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 } catch (UnsupportedEncodingException e) {
                     throw new RuntimeException(e);
                 } catch (ClientProtocolException e) {

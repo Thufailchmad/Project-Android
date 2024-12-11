@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(activity_register);
 
         HttpClient client = new DefaultHttpClient();
-        HttpPost post = new HttpPost(new apiConnection().host+"/register/index.php");
+        HttpPost post = new HttpPost(new apiConnection().host+"/auth/register.php");
 
         StrictMode.ThreadPolicy policy =  new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -74,8 +74,10 @@ public class RegisterActivity extends AppCompatActivity {
                     post.setEntity(new UrlEncodedFormEntity(pairList));
 
                     HttpResponse response = client.execute(post);
-                    JSONObject object = new JSONObject(EntityUtils.toString(response.getEntity()));
-                    if(object.getString("status").equals("error")){
+                    String res = EntityUtils.toString(response.getEntity());
+                    Log.d("creation", res);
+                    JSONObject object = new JSONObject(res);
+                    if(object.has("error")){
                         Toast.makeText(RegisterActivity.this, object.getString("status"), Toast.LENGTH_LONG).show();
                         JSONObject errorObject = object.getJSONObject("error");
                         if(!errorObject.getString("email").isEmpty()){

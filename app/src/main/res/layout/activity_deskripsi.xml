@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dasar1"
+    android:background="@drawable/gradient"
     android:gravity="center"
     tools:context=".DeskripsiActivity">
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Stop Kontak Listrik"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="21sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:paddingTop="10dp" />
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="Barang Elektronik"
             android:textColor="#000000"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:layout_gravity="center_horizontal"
             android:paddingTop="5dp" />
 
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="Rp. 17.000"
             android:textColor="#007bff"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:paddingTop="10dp" />
@@ -71,13 +71,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah ke Keranjang"
-        android:textSize="14sp"
-        android:textColor="#FFFFFF"
-        android:background="#007bff"
+        android:layout_marginLeft="40dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:backgroundTint="@color/white"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="25dp"
-        android:layout_below="@id/produk_card"
-        android:layout_centerHorizontal="false"/>
+        android:layout_below="@id/produk_card"/>
 
     <LinearLayout
         android:id="@+id/deskripsi_card"
@@ -85,7 +85,7 @@
         android:layout_height="262dp"
         android:orientation="vertical"
         android:layout_below="@id/tambah_keranjang"
-        android:background="@drawable/kotak_deskripsi">
+        android:background="@drawable/kotak_keranjang">
 
     <ImageView
         android:id="@+id/deskripsi"
@@ -101,9 +101,11 @@
         android:id="@+id/label_deskripsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:text="Deskripsi"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/deskripsi"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +116,9 @@
         android:id="@+id/detail_deskripsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="17sp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFFFFF"
         android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis impedit exercitationem maiores ullam, deserunt quos saepe. Nam provident totam porro, tempora incidunt temporibus natus nostrum corporis, sint pariatur itaque quos?
     Incidunt quidem sit voluptate quis velit. Facere ipsum dolore maxime eveniet dolores quibusdam saepe obcaecati assumenda ipsa. Amet delectus nesciunt quibusdam nemo et dolorem! Ad deleniti id ullam aliquid harum!
     Sint aspernatur a consequuntur dolores ex consectetur ipsam sit accusamus quia laborum numquam nesciunt reiciendis iste expedita, doloremque nisi quod harum quis cum qui. Beatae quae accusantium mollitia amet consequatur!

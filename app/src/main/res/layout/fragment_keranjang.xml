@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/dasar1"
+    android:background="@drawable/gradient"
     tools:context=".HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,8 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total harga :"
-            android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColorHint="@color/black"
+            android:textColor="#0288D1"
             android:layout_marginRight="150dp"
             />
 
@@ -34,7 +36,10 @@
             android:id="@+id/btn_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Checkout" />
+            android:backgroundTint="#0288D1"
+            android:text="Checkout"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
